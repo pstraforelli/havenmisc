@@ -3,6 +3,10 @@
 #' @param df A data frame imported from SPSS using `haven::read_sav()`
 #'
 #' @return A data frame with 2 columns, listing the names of the variables and the corresponding labels from the metadata.
+#' @importFrom labelled var_label
+#' @importFrom purrr flatten_df
+#' @importFrom tidyr pivot_longer
+#' @importFrom dplyr everything
 #' @export
 #'
 #' @examples
@@ -10,8 +14,8 @@
 #' labels_df(gss_data)
 
 labels_df <- function(df) {
-  labels <- labelled::var_label(df)
-  long_df <- purrr::flatten_df(labels) 
-  output <- tidyr::gather(long_df, key = !! rlang::sym("name"), value = !! rlang::sym("label"))
-  output
+  df |> 
+    var_label() |> 
+    flatten_df() |> 
+    pivot_longer(everything(), names_to = "name", values_to = "label")
 }
