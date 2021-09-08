@@ -4,7 +4,7 @@ Version: 0.1
 Authors@R: person("Phil", "Straforelli", email = "pstraforelli@gmail.com", role = c("aut", "cre"))
 Description: Additional functionalities to the haven and the labelled packages
     related to the import and handling of SPSS files.
-Depends: R (>= 3.5.2.0)
+Depends: R (>= 4.1.0.0)
 Imports: labelled, dplyr, purrr, tidyr, haven
 License: MIT + file LICENSE
 Encoding: UTF-8
